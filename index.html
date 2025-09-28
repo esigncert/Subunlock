@@ -1,86 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <title>Unlock YouTube</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>I Love You</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff6b6b, 0 0 30px #ff4757;
+      }
+      to {
+        text-shadow: 0 0 20px #ff9a9e, 0 0 30px #ff758c, 0 0 40px #ff4757;
+      }
+    }
+
+    .heart {
+      color: red;
+      font-size: 70px;
+      margin-left: 15px;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+  </style>
 </head>
 <body>
-  <div class="card">
-    <h2>🔒 Nội dung bị khoá</h2>
-    <p>Vui lòng Subscribe kênh YouTube để mở khoá nội dung VIP</p>
-
-    <!-- Nút Subscribe -->
-    <div id="ytBtn" class="action">📺 Subscribe YouTube</div>
-
-    <!-- Trạng thái -->
-    <div id="status" class="status">Chưa hoàn thành.</div>
-
-    <!-- Nút mở khoá link (ẩn sẵn) -->
-    <div id="unlock" class="unlock">
-      👉 <a id="unlockLink" href="https://khoindvn.io.vn" target="_blank">Mở khoá ngay</a>
-    </div>
-  </div>
-
-  <!-- Footer quảng cáo -->
-  <footer class="ads-area">
-    <!-- Quảng cáo 1 -->
-    <div class="ads">
-      <script async src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
-    </div>
-
-    <!-- Quảng cáo 2 -->
-    <div class="ads">
-      <script async src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
-    </div>
-
-    <!-- Quảng cáo 3 -->
-    <div class="ads">
-      <script async data-cfasync="false" src="//pl27739650.revenuecpmgate.com/0b60606b06c0e1d9f4ddeea489eda196/invoke.js"></script>
-      <div id="container-0b60606b06c0e1d9f4ddeea489eda196"></div>
-    </div>
-
-    <!-- Quảng cáo 4 (Banner 320x50) -->
-    <div class="ads">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '73e5c14dff79a8e09e4b56d72d5f25ad',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script async src="//www.highperformanceformat.com/73e5c14dff79a8e09e4b56d72d5f25ad/invoke.js"></script>
-    </div>
-  </footer>
-
-  <script>
-    const ytBtn = document.getElementById("ytBtn");
-    const status = document.getElementById("status");
-    const unlock = document.getElementById("unlock");
-    const targetUrl = "https://khoindvn.io.vn"; // link VIP
-
-    ytBtn.onclick = () => {
-      window.open("https://www.youtube.com/@khoindvnmodios", "_blank");
-
-      ytBtn.classList.add("done");
-      let timeLeft = 15;
-      status.textContent = `⏳ Vui lòng chờ ${timeLeft}s...`;
-
-      const countdown = setInterval(() => {
-        timeLeft--;
-        if (timeLeft > 0) {
-          status.textContent = `⏳ Vui lòng chờ ${timeLeft}s...`;
-        } else {
-          clearInterval(countdown);
-          status.textContent = "✔️ Đã mở khoá!";
-          unlock.style.display = "block";
-          setTimeout(() => { window.location.href = targetUrl; }, 1000);
-        }
-      }, 1000);
-    };
-  </script>
+  <h1>I Love You <span class="heart">❤</span></h1>
 </body>
 </html>
