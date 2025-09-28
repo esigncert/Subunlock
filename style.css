@@ -1,4 +1,4 @@
-/* Reset cơ bản */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,27 +6,51 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Nền trang */
 body {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+
+  /* Background gradient nhiều lớp */
+  background: linear-gradient(135deg, #1e272e, #2c3e50, #34495e);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+
+  /* Overlay pattern mờ */
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 25px 25px;
+  z-index: 0;
+}
+
+/* Nội dung trên nền */
+.card, .ads-area {
+  position: relative;
+  z-index: 1;
 }
 
 /* Card chính */
 .card {
-  background: #3b3b98;
+  background: rgba(59, 59, 152, 0.9);
   padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   text-align: center;
   width: 90%;
   max-width: 420px;
   margin-bottom: 30px;
+  backdrop-filter: blur(8px);
 }
 
 .card h2 {
@@ -36,7 +60,7 @@ body {
 
 .card p {
   font-size: 1rem;
-  color: #dcdde1;
+  color: #f1f2f6;
   margin-bottom: 20px;
 }
 
@@ -91,10 +115,10 @@ body {
 }
 
 .ads {
-  background: #2f3640;
-  padding: 8px;
+  background: rgba(47, 54, 64, 0.9);
+  padding: 10px;
   border-radius: 12px;
   min-width: 150px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
