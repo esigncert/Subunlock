@@ -4,7 +4,31 @@
   <meta charset="utf-8" />
   <title>Unlock YouTube</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=2">
+  <link rel="stylesheet" href="/style.css?v=6">
+  <style>
+    /* Logo YouTube trong nút */
+    .yt-logo {
+      display: inline-block;
+      width: 22px;
+      height: 16px;
+      background: red;
+      border-radius: 4px;
+      position: relative;
+      margin-right: 8px;
+      top: 3px;
+    }
+    .yt-logo::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 3px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid white;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+  </style>
 </head>
 <body>
   <div class="card">
@@ -12,18 +36,20 @@
     <p>Vui lòng Subscribe kênh YouTube để mở khoá nội dung VIP</p>
 
     <!-- Nút Subscribe -->
-    <div id="ytBtn" class="action">📺 Subscribe YouTube</div>
+    <div id="ytBtn" class="action">
+      <span class="yt-logo"></span> Subscribe YouTube
+    </div>
 
     <!-- Trạng thái -->
     <div id="status" class="status">❌ Chưa hoàn thành.</div>
 
-    <!-- Nút mở khoá link (ẩn lúc đầu) -->
-    <div id="unlock" class="unlock">
+    <!-- Nút mở khoá -->
+    <div id="unlock" class="unlock" style="display:none;">
       👉 <a id="unlockLink" href="https://khoindvn.io.vn" target="_blank">Mở khoá ngay</a>
     </div>
   </div>
 
-  <!-- Khu vực quảng cáo -->
+  <!-- Quảng cáo -->
   <footer class="ads-area">
     <div class="ads">
       <script async src="//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js"></script>
@@ -49,15 +75,22 @@
     </div>
   </footer>
 
-  <!-- JS điều khiển -->
+  <!-- JS -->
   <script>
-    // Ẩn nút mở khóa khi mới load
-    document.getElementById("unlock").style.display = "none";
-
-    // Khi bấm Subscribe
     document.getElementById("ytBtn").addEventListener("click", function() {
-      document.getElementById("status").innerText = "✅ Đã Subscribe!";
-      document.getElementById("unlock").style.display = "block"; // hiện nút mở khóa
+      let countdown = 15; // giây chờ
+      document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
+      document.getElementById("unlock").style.display = "block"; // hiện nút mở khoá
+
+      let timer = setInterval(function() {
+        countdown--;
+        document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
+        if (countdown <= 0) {
+          clearInterval(timer);
+          document.getElementById("status").innerText = "✅ Đang chuyển hướng...";
+          window.location.href = "https://khoindvn.io.vn"; // link đích
+        }
+      }, 1000);
     });
   </script>
 </body>
