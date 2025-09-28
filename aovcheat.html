@@ -4,16 +4,19 @@
   <meta charset="utf-8" />
   <title>Unlock YouTube</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=8">
+  <link rel="stylesheet" href="/style.css?v=10">
 </head>
 <body>
   <div class="card">
     <h2>🔒 Nội dung bị khoá</h2>
     <p>Vui lòng Subscribe kênh YouTube để mở khoá nội dung VIP</p>
 
-    <!-- Nút Subscribe -->
+    <!-- Nút Subscribe với logo YouTube SVG -->
     <div id="ytBtn" class="action">
-      <span class="yt-logo"></span> Subscribe YouTube
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 24 24" fill="red" style="vertical-align:middle; margin-right:6px; border-radius:4px;">
+        <path fill="#fff" d="M10 15V9l5 3-5 3z"/>
+      </svg>
+      Subscribe YouTube
     </div>
 
     <!-- Trạng thái -->
@@ -25,7 +28,7 @@
     </div>
   </div>
 
-  <!-- Khu vực quảng cáo -->
+  <!-- Quảng cáo -->
   <footer class="ads-area">
     <div class="ads">
       <script async src="//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js"></script>
@@ -57,23 +60,21 @@
       let countdown = 15; // giây chờ
       document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
 
+      // Đếm ngược 15s
       let timer = setInterval(function() {
         countdown--;
         document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
         
         if (countdown <= 0) {
           clearInterval(timer);
-
-          // Hiện nút mở khoá
-          document.getElementById("unlock").style.display = "block";
-          document.getElementById("status").innerText = "✅ Đã sẵn sàng, đang chuyển hướng...";
-
-          // Auto chuyển hướng
-          setTimeout(() => {
-            window.location.href = "https://khoindvn.io.vn";
-          }, 1000); // delay thêm 1s cho người dùng thấy nút
+          document.getElementById("unlock").style.display = "block"; // hiện nút mở khoá
+          document.getElementById("status").innerText = "✅ Đang chuyển hướng...";
+          window.location.href = "https://khoindvn.io.vn"; // web đích sau 15s
         }
       }, 1000);
+
+      // Ngay lập tức mở kênh YouTube
+      window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
     });
   </script>
 </body>
