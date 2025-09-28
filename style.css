@@ -1,53 +1,100 @@
+/* Reset cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  margin:0;
-  font-family:"Arial", sans-serif;
-  background:#f0f0f0;
-  color:#333;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
+/* Card chính */
 .card {
-  background:#fff;
-  padding:28px 24px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.15);
-  max-width:400px;
-  width:90%;
-  text-align:center;
+  background: #3b3b98;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  margin-bottom: 30px;
 }
 
-h2 { margin-top:0; color:#111; }
-
-.action, .unlock {
-  margin:16px 0;
-  padding:12px;
-  border-radius:8px;
-  background:#007bff;
-  color:#fff;
-  cursor:pointer;
-  transition:0.2s;
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
 }
-.action:hover, .unlock:hover { background:#0056b3; }
 
-.done { background:#28a745 !important; }
+.card p {
+  font-size: 1rem;
+  color: #dcdde1;
+  margin-bottom: 20px;
+}
 
+/* Nút bấm */
+.action {
+  background: linear-gradient(90deg, #00a8ff, #0097e6);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.action:hover {
+  background: linear-gradient(90deg, #0097e6, #00a8ff);
+  transform: scale(1.05);
+}
+
+/* Trạng thái */
 .status {
-  margin-top:14px;
-  font-size:15px;
-  color:#555;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #f6e58d;
 }
 
-.unlock { display:none; }
+/* Nút mở khóa */
+.unlock a {
+  display: inline-block;
+  background: #44bd32;
+  padding: 12px 18px;
+  color: white;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
 
+.unlock a:hover {
+  background: #4cd137;
+  transform: scale(1.05);
+}
+
+/* Footer ads */
 .ads-area {
-  margin-top:auto;
-  padding:16px 0;
-  width:100%;
-  background:#eee;
-  text-align:center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
 }
-.ads { margin:8px 0; }
+
+.ads {
+  background: #2f3640;
+  padding: 8px;
+  border-radius: 12px;
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
