@@ -6,15 +6,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     body{margin:0;font-family:sans-serif;background:#0e1322;color:#eee;
-         display:flex;justify-content:center;align-items:center;min-height:100vh}
+         display:flex;flex-direction:column;align-items:center;min-height:100vh}
     .card{background:#161d31;padding:24px;border-radius:12px;
-          box-shadow:0 8px 20px rgba(0,0,0,.5);max-width:400px;width:100%;text-align:center}
+          box-shadow:0 8px 20px rgba(0,0,0,.5);max-width:420px;width:100%;text-align:center;margin-top:auto;margin-bottom:auto}
     h2{margin-top:0}
     .action{margin:12px 0;padding:12px;border-radius:8px;background:#222b44;
             cursor:pointer;transition:.2s}
     .action:hover{background:#2a3555}
     .done{background:#173b2e!important;color:#9ef3c1}
     .status{margin-top:16px;font-size:14px;color:#aaa}
+    .unlock{display:none;margin-top:16px;padding:12px;background:#0f5132;
+            color:#d1fae5;border-radius:8px}
+    a{color:#4dd;}
+    .ads {margin:20px 0;width:100%;text-align:center;}
   </style>
 </head>
 <body>
@@ -22,20 +26,57 @@
     <h2>🔒 Nội dung bị khoá</h2>
     <p>Subscribe kênh YouTube của mình để mở khoá:</p>
 
+    <!-- Nút Subscribe -->
     <div id="ytBtn" class="action">
       📺 Subscribe YouTube
     </div>
 
+    <!-- Trạng thái -->
     <div id="status" class="status">Chưa hoàn thành.</div>
+
+    <!-- Nút mở khoá link (ẩn sẵn) -->
+    <div id="unlock" class="unlock">
+      👉 <a id="unlockLink" href="https://khoindvn.io.vn" target="_blank">Mở khoá nội dung</a>
+    </div>
+  </div>
+
+  <!-- Quảng cáo 1 -->
+  <div class="ads">
+    <script type='text/javascript' src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
+  </div>
+
+  <!-- Quảng cáo 2 -->
+  <div class="ads">
+    <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
+  </div>
+
+  <!-- Quảng cáo 3 -->
+  <div class="ads">
+    <script async="async" data-cfasync="false" src="//pl27739650.revenuecpmgate.com/0b60606b06c0e1d9f4ddeea489eda196/invoke.js"></script>
+    <div id="container-0b60606b06c0e1d9f4ddeea489eda196"></div>
+  </div>
+
+  <!-- Quảng cáo 4 (Banner 320x50) -->
+  <div class="ads">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '73e5c14dff79a8e09e4b56d72d5f25ad',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/73e5c14dff79a8e09e4b56d72d5f25ad/invoke.js"></script>
   </div>
 
   <script>
     const ytBtn = document.getElementById("ytBtn");
     const status = document.getElementById("status");
-    const targetUrl = "https://khoindvn.io.vn"; // link bạn muốn chuyển
+    const unlock = document.getElementById("unlock");
+    const targetUrl = "https://khoindvn.io.vn"; // link VIP
 
     ytBtn.onclick = () => {
-      // Mở kênh YouTube
       window.open("https://www.youtube.com/@khoindvnmodios", "_blank");
 
       ytBtn.classList.add("done");
@@ -48,15 +89,15 @@
           status.textContent = `⏳ Vui lòng chờ ${timeLeft}s...`;
         } else {
           clearInterval(countdown);
-          status.textContent = "✔️ Đang chuyển hướng...";
-          // Tự động redirect
-          window.location.href = targetUrl;
+          status.textContent = "✔️ Đã mở khoá!";
+          unlock.style.display = "block"; // hiện nút
+          // tự động chuyển link sau 1s
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 1000);
         }
       }, 1000);
     };
   </script>
 </body>
-  <script type='text/javascript' src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
-  <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
-  <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
 </html>
