@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Unlock YouTube</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css?v=11">
+</head>
+<body>
+  <div class="card">
+    <h2>🔒 Nội dung bị khoá</h2>
+    <p>Vui lòng ấn vào nút Subscribe và đăng ký kênh YouTube để tiếp tục</p>
+
+    <!-- Nút Subscribe với logo YouTube SVG -->
+    <div id="ytBtn" class="action">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           width="24" height="18" viewBox="0 0 24 18" 
+           style="vertical-align:middle; margin-right:6px;">
+        <rect width="24" height="18" rx="4" fill="#FF0000"/>
+        <polygon points="10,5 19,9 10,13" fill="white"/>
+      </svg>
+      Subscribe YouTube
+    </div>
+
+    <!-- Trạng thái -->
+    <div id="status" class="status">❌ Chưa hoàn thành.</div>
+
+    <!-- Nút mở khoá (ẩn mặc định) -->
+    <div id="unlock" class="unlock" style="display:none;">
+      👉 <a id="unlockLink" href="https://layma.net/QUCff4Bp0" target="_blank">Mở khoá ngay</a>
+    </div>
+  </div>
+
+  <!-- Quảng cáo -->
+  <footer class="ads-area">
+    <div class="ads">
+    <script type='text/javascript' src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
+    </div>
+    <div class="ads">
+      <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
+    </div>
+    <div class="ads">
+      <script type="text/javascript">
+	atOptions = {
+		'key' : '73e5c14dff79a8e09e4b56d72d5f25ad',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73e5c14dff79a8e09e4b56d72d5f25ad/invoke.js"></script>
+    </div>
+    <div class="ads">
+<script async="async" data-cfasync="false" src="//pl27739650.revenuecpmgate.com/0b60606b06c0e1d9f4ddeea489eda196/invoke.js"></script>
+<div id="container-0b60606b06c0e1d9f4ddeea489eda196"></div>
+    </div>
+  </footer>
+
+  <!-- JS điều khiển -->
+  <script>
+    document.getElementById("ytBtn").addEventListener("click", function() {
+      let countdown = 15; // giây chờ
+      document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
+
+      // Đếm ngược 15s
+      let timer = setInterval(function() {
+        countdown--;
+        document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
+        
+        if (countdown <= 0) {
+          clearInterval(timer);
+          document.getElementById("unlock").style.display = "block"; // hiện nút mở khoá
+          document.getElementById("status").innerText = "✅ Đang chuyển hướng...";
+          window.location.href = "https://khoindvn.io.vn"; // web đích sau 15s
+        }
+      }, 1000);
+
+      // Ngay lập tức mở kênh YouTube
+      window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
+    });
+  </script>
+</body>
+</html>
