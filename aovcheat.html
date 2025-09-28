@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <title>Unlock YouTube</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     body {
       margin:0;
-      font-family:"Poppins", Arial, sans-serif;
-      background:linear-gradient(135deg,#1f1c2c,#928DAB);
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg,#1f1c2c,#928DAB);
       color:#eee;
       display:flex;
       flex-direction:column;
-      justify-content:center; /* căn giữa theo chiều dọc */
-      align-items:center;     /* căn giữa theo chiều ngang */
+      align-items:center;
       min-height:100vh;
     }
-
     .card {
       background:rgba(255,255,255,0.08);
       backdrop-filter: blur(8px);
@@ -26,19 +24,18 @@
       max-width:420px;
       width:90%;
       text-align:center;
+      margin-top:auto;
+      margin-bottom:40px;
       animation: fadeIn 1s ease;
       border:1px solid rgba(255,255,255,0.15);
     }
-
     h2 {
       margin-top:0;
       font-weight:700;
       color:#fff;
       font-size:24px;
     }
-
     p {color:#ddd;margin-bottom:20px;}
-
     .action, .unlock {
       margin:16px 0;
       padding:14px;
@@ -50,46 +47,36 @@
       font-size:16px;
       box-shadow:0 4px 12px rgba(0,114,255,0.4);
     }
-
     .action:hover, .unlock:hover {
       transform: scale(1.05);
       opacity:0.95;
     }
-
     .done {
       background:linear-gradient(45deg,#43e97b,#38f9d7)!important;
       box-shadow:0 4px 12px rgba(67,233,123,0.4);
       color:#fff;
     }
-
     .status {
       margin-top:18px;
       font-size:18px;
       font-weight:500;
       color:#ffeb3b;
     }
-
     .unlock {
       display:none;
       background:linear-gradient(45deg,#ff512f,#dd2476);
       color:#fff;
       box-shadow:0 4px 12px rgba(221,36,118,0.5);
     }
-
     .unlock a {
       color:#fff;
       text-decoration:none;
     }
-
-    .ads-area {
-      margin-top:auto;
-      padding:20px 0;
+    .ads {
+      margin:14px 0;
       width:100%;
-      background:#111;
       text-align:center;
     }
-    .ads {margin:10px 0;}
-
     @keyframes fadeIn {
       from {opacity:0; transform: translateY(20px);}
       to {opacity:1; transform: translateY(0);}
@@ -102,7 +89,9 @@
     <p>Vui lòng Subscribe kênh YouTube để mở khoá nội dung VIP</p>
 
     <!-- Nút Subscribe -->
-    <div id="ytBtn" class="action">📺 Subscribe YouTube</div>
+    <div id="ytBtn" class="action">
+      📺 Subscribe YouTube
+    </div>
 
     <!-- Trạng thái -->
     <div id="status" class="status">Chưa hoàn thành.</div>
@@ -113,38 +102,35 @@
     </div>
   </div>
 
-  <!-- Footer quảng cáo -->
-  <footer class="ads-area">
-    <!-- Quảng cáo 1 -->
-    <div class="ads">
-      <script type='text/javascript' src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
-    </div>
+  <!-- Quảng cáo 1 -->
+  <div class="ads">
+    <script type='text/javascript' src='//pl27739644.revenuecpmgate.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
+  </div>
 
-    <!-- Quảng cáo 2 -->
-    <div class="ads">
-      <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
-    </div>
+  <!-- Quảng cáo 2 -->
+  <div class="ads">
+    <script type='text/javascript' src='//pl27739645.revenuecpmgate.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
+  </div>
 
-    <!-- Quảng cáo 3 -->
-    <div class="ads">
-      <script async="async" data-cfasync="false" src="//pl27739650.revenuecpmgate.com/0b60606b06c0e1d9f4ddeea489eda196/invoke.js"></script>
-      <div id="container-0b60606b06c0e1d9f4ddeea489eda196"></div>
-    </div>
+  <!-- Quảng cáo 3 -->
+  <div class="ads">
+    <script async="async" data-cfasync="false" src="//pl27739650.revenuecpmgate.com/0b60606b06c0e1d9f4ddeea489eda196/invoke.js"></script>
+    <div id="container-0b60606b06c0e1d9f4ddeea489eda196"></div>
+  </div>
 
-    <!-- Quảng cáo 4 (Banner 320x50) -->
-    <div class="ads">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '73e5c14dff79a8e09e4b56d72d5f25ad',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/73e5c14dff79a8e09e4b56d72d5f25ad/invoke.js"></script>
-    </div>
-  </footer>
+  <!-- Quảng cáo 4 (Banner 320x50) -->
+  <div class="ads">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '73e5c14dff79a8e09e4b56d72d5f25ad',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/73e5c14dff79a8e09e4b56d72d5f25ad/invoke.js"></script>
+  </div>
 
   <script>
     const ytBtn = document.getElementById("ytBtn");
@@ -167,7 +153,9 @@
           clearInterval(countdown);
           status.textContent = "✔️ Đã mở khoá!";
           unlock.style.display = "block"; // hiện nút
-          setTimeout(() => { window.location.href = targetUrl; }, 1000);
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 1000);
         }
       }, 1000);
     };
