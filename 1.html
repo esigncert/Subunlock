@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Unlock YouTube</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{margin:0;font-family:sans-serif;background:#0e1322;color:#eee;
+         display:flex;justify-content:center;align-items:center;min-height:100vh}
+    .card{background:#161d31;padding:24px;border-radius:12px;
+          box-shadow:0 8px 20px rgba(0,0,0,.5);max-width:400px;width:100%;text-align:center}
+    h2{margin-top:0}
+    .action{margin:12px 0;padding:12px;border-radius:8px;background:#222b44;
+            cursor:pointer;transition:.2s}
+    .action:hover{background:#2a3555}
+    .done{background:#173b2e!important;color:#9ef3c1}
+    .status{margin-top:16px;font-size:14px;color:#aaa}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔒 Nội dung bị khoá</h2>
+    <p>Subscribe kênh YouTube của mình để mở khoá:</p>
+
+    <div id="ytBtn" class="action">
+      📺 Subscribe YouTube
+    </div>
+
+    <div id="status" class="status">Chưa hoàn thành.</div>
+  </div>
+
+  <script>
+    const ytBtn = document.getElementById("ytBtn");
+    const status = document.getElementById("status");
+    const targetUrl = "https://khoindvn.io.vn"; // link bạn muốn chuyển
+
+    ytBtn.onclick = () => {
+      // Mở kênh YouTube
+      window.open("https://www.youtube.com/@khoindvnmodios", "_blank");
+
+      ytBtn.classList.add("done");
+      let timeLeft = 15;
+      status.textContent = `⏳ Vui lòng chờ ${timeLeft}s...`;
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          status.textContent = `⏳ Vui lòng chờ ${timeLeft}s...`;
+        } else {
+          clearInterval(countdown);
+          status.textContent = "✔️ Đang chuyển hướng...";
+          // Tự động redirect
+          window.location.href = targetUrl;
+        }
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
