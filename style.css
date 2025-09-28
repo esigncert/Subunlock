@@ -1,76 +1,53 @@
 body {
   margin:0;
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(135deg,#1f1c2c,#928DAB);
-  color:#eee;
+  font-family:"Arial", sans-serif;
+  background:#f0f0f0;
+  color:#333;
   display:flex;
   flex-direction:column;
+  justify-content:center;
   align-items:center;
   min-height:100vh;
 }
+
 .card {
-  background:rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-  padding:32px 26px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
-  max-width:420px;
+  background:#fff;
+  padding:28px 24px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  max-width:400px;
   width:90%;
   text-align:center;
-  margin-top:auto;
-  margin-bottom:40px;
-  animation: fadeIn 1s ease;
-  border:1px solid rgba(255,255,255,0.15);
 }
-h2 {
-  margin-top:0;
-  font-weight:700;
-  color:#fff;
-  font-size:24px;
-}
-p {color:#ddd;margin-bottom:20px;}
+
+h2 { margin-top:0; color:#111; }
+
 .action, .unlock {
   margin:16px 0;
-  padding:14px;
-  border-radius:12px;
-  background:linear-gradient(45deg,#00c6ff,#0072ff);
+  padding:12px;
+  border-radius:8px;
+  background:#007bff;
+  color:#fff;
   cursor:pointer;
-  transition:all .2s;
-  font-weight:600;
-  font-size:16px;
-  box-shadow:0 4px 12px rgba(0,114,255,0.4);
+  transition:0.2s;
 }
-.action:hover, .unlock:hover {
-  transform: scale(1.05);
-  opacity:0.95;
-}
-.done {
-  background:linear-gradient(45deg,#43e97b,#38f9d7)!important;
-  box-shadow:0 4px 12px rgba(67,233,123,0.4);
-  color:#fff;
-}
+.action:hover, .unlock:hover { background:#0056b3; }
+
+.done { background:#28a745 !important; }
+
 .status {
-  margin-top:18px;
-  font-size:18px;
-  font-weight:500;
-  color:#ffeb3b;
+  margin-top:14px;
+  font-size:15px;
+  color:#555;
 }
-.unlock {
-  display:none;
-  background:linear-gradient(45deg,#ff512f,#dd2476);
-  color:#fff;
-  box-shadow:0 4px 12px rgba(221,36,118,0.5);
-}
-.unlock a {
-  color:#fff;
-  text-decoration:none;
-}
-.ads {
-  margin:14px 0;
+
+.unlock { display:none; }
+
+.ads-area {
+  margin-top:auto;
+  padding:16px 0;
   width:100%;
+  background:#eee;
   text-align:center;
 }
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
-}
+.ads { margin:8px 0; }
