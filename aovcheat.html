@@ -67,5 +67,24 @@
       window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
     });
   </script>
+
+  <!-- Audio PLay -->
+<audio id="bg-music" hidden>
+  <source src="https://files.catbox.moe/p7ufvu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var audio = document.getElementById("bg-music");
+  // Thử phát ngay khi load trang
+  audio.play().catch(function() {
+    // Nếu bị chặn thì phát ngay khi user click/chạm lần đầu
+    document.body.addEventListener("click", function() {
+      audio.play();
+    }, { once: true });
+  });
+});
+</script>
+
 </body>
 </html>
