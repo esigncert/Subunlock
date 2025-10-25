@@ -2,14 +2,14 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>Unlock YouTube</title>
+  <title>🔒 Unlock YouTube</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=11">
   <style>
     body {
-      font-family: sans-serif;
-      background: #f6f6f6;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f6f6f6, #e8ebee);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -17,78 +17,99 @@
     }
     .card {
       background: #fff;
-      padding: 20px 25px;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 360px;
+      animation: fadeIn 0.6s ease;
     }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
     .action {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      background: #ff0000;
+      border-radius: 10px;
       color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
+      font-weight: 600;
+      padding: 12px 20px;
       cursor: pointer;
-      margin-top: 10px;
+      margin: 10px 0;
+      transition: 0.25s;
+      font-size: 16px;
+    }
+    .action:hover { transform: translateY(-2px); opacity: 0.9; }
+    #ytBtn { background: #ff0000; }
+    #teleBtn { background: #0088cc; }
+
+    .status { margin-top: 15px; font-weight: 500; color: #333; }
+    .unlock { margin-top: 18px; display: none; }
+    .unlock a {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
       transition: 0.3s;
     }
-    .action:hover { opacity: 0.9; }
-    #teleBtn {
-      background: #0088cc;
+    .unlock a:hover { background: #43a047; }
+
+    .circle {
+      width: 45px;
+      height: 45px;
+      border: 4px solid #ddd;
+      border-top-color: #4CAF50;
+      border-radius: 50%;
+      margin: 10px auto;
+      animation: spin 1s linear infinite;
+      display: none;
     }
-    #teleBtn svg { margin-right: 6px; }
-    .status {
-      margin-top: 15px;
-      font-weight: 500;
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
     }
-    .unlock {
-      margin-top: 15px;
-      font-weight: bold;
+
+    /* Ads luôn hiện */
+    footer.ads-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      z-index: 999;
     }
-    footer.ads-area { margin-top: 20px; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>🔒 Nội dung bị khoá</h2>
-    <p>Vui lòng ấn vào nút Subscribe và tham gia nhóm Telegram để tiếp tục</p>
+    <h2>🔒 Nội dung bị khóa</h2>
+    <p>Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
 
-    <!-- Nút Subscribe -->
-    <div id="ytBtn" class="action">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-           width="24" height="18" viewBox="0 0 24 18" 
-           style="vertical-align:middle; margin-right:6px;">
-        <rect width="24" height="18" rx="4" fill="#FF0000"/>
-        <polygon points="10,5 19,9 10,13" fill="white"/>
-      </svg>
-      Subscribe YouTube
-    </div>
+    <div id="ytBtn" class="action">▶️ Subscribe YouTube</div>
+    <div id="teleBtn" class="action">💬 Tham gia nhóm Telegram</div>
 
-    <!-- Nút Telegram -->
-    <div id="teleBtn" class="action">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 240 240">
-        <circle cx="120" cy="120" r="120" fill="#0088cc"/>
-        <path d="M190 62L39 113c-5 2-5 8 0 10l36 11 13 41c2 5 8 6 11 2l20-19 38 27c3 2 8 1 9-3l29-116c1-4-3-8-7-6z" fill="#fff"/>
-      </svg>
-      Tham gia nhóm Telegram
-    </div>
-
+    <div class="circle" id="loading"></div>
     <div id="status" class="status">❌ Chưa hoàn thành.</div>
 
-    <div id="unlock" class="unlock" style="display:none;">
+    <div id="unlock" class="unlock">
       👉 <a id="unlockLink" href="https://layma.net/qo7OYu1ap" target="_blank">Mở khoá ngay</a>
     </div>
   </div>
 
+  <!-- QUẢNG CÁO LUÔN HIỆN -->
   <footer class="ads-area">
     <div class="ads">
       <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
     </div>
-    <div class="ads">
+    <div class="ads" style="margin-top:8px;">
       <script type='text/javascript' src='//offeringchewjean.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
     </div>
   </footer>
@@ -98,38 +119,40 @@
     const teleBtn = document.getElementById("teleBtn");
     const statusEl = document.getElementById("status");
     const unlock = document.getElementById("unlock");
+    const loading = document.getElementById("loading");
 
     let ytClicked = false;
     let teleClicked = false;
 
-    ytBtn.addEventListener("click", function() {
+    ytBtn.addEventListener("click", () => {
       ytClicked = true;
       window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
-      checkBoth();
+      checkUnlock();
     });
 
-    teleBtn.addEventListener("click", function() {
+    teleBtn.addEventListener("click", () => {
       teleClicked = true;
       window.open("https://t.me/+2LmRdQqpngEyNjhl", "_blank");
-      checkBoth();
+      checkUnlock();
     });
 
-    function checkBoth() {
+    function checkUnlock() {
       if (ytClicked && teleClicked) {
         let countdown = 15;
+        loading.style.display = "block";
         statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
         const timer = setInterval(() => {
           countdown--;
           statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
           if (countdown <= 0) {
             clearInterval(timer);
+            loading.style.display = "none";
             unlock.style.display = "block";
-            statusEl.innerText = "✅ Đang chuyển hướng...";
-            window.location.href = "https://layma.net/qo7OYu1ap";
+            statusEl.innerText = "✅ Đã mở khoá!";
           }
         }, 1000);
       } else {
-        statusEl.innerText = "⚠️ Hãy nhấn cả 2 nút để mở khoá.";
+        statusEl.innerText = "⚠️ Hãy nhấn cả 2 nút để tiếp tục.";
       }
     }
   </script>
