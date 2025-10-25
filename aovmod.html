@@ -34,7 +34,7 @@
       box-shadow: 0 6px 25px rgba(0,0,0,0.5);
       text-align: center;
       max-width: 360px;
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.5s ease;
     }
 
     @keyframes fadeIn {
@@ -52,7 +52,7 @@
       padding: 12px 20px;
       cursor: pointer;
       margin: 10px 0;
-      transition: 0.25s;
+      transition: all 0.3s ease;
       font-size: 16px;
       position: relative;
     }
@@ -61,7 +61,6 @@
     #ytBtn { background: #ff0000; }
     #teleBtn { background: #0088cc; }
 
-    /* Hiệu ứng tick xanh */
     .action.success {
       background: #2ecc71 !important;
     }
@@ -80,7 +79,7 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    .status { margin-top: 15px; font-weight: 500; color: #ddd; }
+    .status { margin-top: 15px; font-weight: 500; color: #ccc; }
     .unlock { margin-top: 18px; display: none; }
     .unlock a {
       background: #4CAF50;
@@ -93,14 +92,14 @@
     }
     .unlock a:hover { background: #43a047; }
 
-    .circle {
-      width: 45px;
-      height: 45px;
-      border: 4px solid #333;
-      border-top-color: #4CAF50;
+    .loader {
+      margin: 12px auto;
+      border: 3px solid #333;
+      border-top: 3px solid #4CAF50;
       border-radius: 50%;
-      margin: 10px auto;
-      animation: spin 1s linear infinite;
+      width: 30px;
+      height: 30px;
+      animation: spin 0.8s linear infinite;
       display: none;
     }
     @keyframes spin {
@@ -126,7 +125,7 @@
 
   <div class="card">
     <h2>🔒 Nội dung bị khóa</h2>
-    <p style="color:#ccc;">Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
+    <p style="color:#bbb;">Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
 
     <div id="ytBtn" class="action">
       ▶️ Subscribe YouTube
@@ -138,7 +137,7 @@
       <span class="checkmark">✅</span>
     </div>
 
-    <div class="circle" id="loading"></div>
+    <div class="loader" id="loader"></div>
     <div id="status" class="status">❌ Chưa hoàn thành.</div>
 
     <div id="unlock" class="unlock">
@@ -146,7 +145,6 @@
     </div>
   </div>
 
-  <!-- Quảng cáo luôn hiển thị -->
   <footer class="ads-area">
     <div class="ads">
       <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
@@ -161,43 +159,47 @@
     const teleBtn = document.getElementById("teleBtn");
     const statusEl = document.getElementById("status");
     const unlock = document.getElementById("unlock");
-    const loading = document.getElementById("loading");
+    const loader = document.getElementById("loader");
 
     let ytClicked = false;
     let teleClicked = false;
+    let unlocking = false;
 
-    ytBtn.addEventListener("click", () => {
-      ytClicked = true;
-      ytBtn.classList.add("success");
-      window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
-      statusEl.innerText = "✅ Đã nhấn Subscribe!";
-      checkUnlock();
-    });
+    ytBtn.onclick = () => handleClick(ytBtn, "https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "Đã nhấn Subscribe!");
+    teleBtn.onclick = () => handleClick(teleBtn, "https://t.me/+2LmRdQqpngEyNjhl", "Đã tham gia nhóm Telegram!");
 
-    teleBtn.addEventListener("click", () => {
-      teleClicked = true;
-      teleBtn.classList.add("success");
-      window.open("https://t.me/+2LmRdQqpngEyNjhl", "_blank");
-      statusEl.innerText = "✅ Đã tham gia nhóm Telegram!";
-      checkUnlock();
-    });
+    function handleClick(btn, url, message) {
+      btn.classList.add("success");
+      window.open(url, "_blank");
+      statusEl.innerText = "✅ " + message;
+      if (btn.id === "ytBtn") ytClicked = true;
+      if (btn.id === "teleBtn") teleClicked = true;
+      if (!unlocking && ytClicked && teleClicked) startUnlock();
+    }
 
-    function checkUnlock() {
-      if (ytClicked && teleClicked) {
-        let countdown = 15;
-        loading.style.display = "block";
-        statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-        const timer = setInterval(() => {
-          countdown--;
-          statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-          if (countdown <= 0) {
-            clearInterval(timer);
-            loading.style.display = "none";
-            unlock.style.display = "block";
-            statusEl.innerText = "✅ Đã mở khoá thành công!";
-          }
-        }, 1000);
-      }
+    function startUnlock() {
+      unlocking = true;
+      loader.style.display = "block";
+      statusEl.innerText = "⏳ Đang xác minh...";
+      let countdown = 15;
+      const countdownEl = document.createElement("div");
+      countdownEl.style.marginTop = "8px";
+      countdownEl.style.fontSize = "14px";
+      countdownEl.style.color = "#aaa";
+      countdownEl.innerText = `Còn ${countdown}s`;
+      statusEl.appendChild(countdownEl);
+
+      const timer = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          clearInterval(timer);
+          loader.style.display = "none";
+          unlock.style.display = "block";
+          statusEl.innerText = "✅ Đã mở khoá thành công!";
+        } else {
+          countdownEl.innerText = `Còn ${countdown}s`;
+        }
+      }, 1000);
     }
   </script>
 </body>
