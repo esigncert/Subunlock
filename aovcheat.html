@@ -2,159 +2,214 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>Unlock YouTube</title>
+  <title>🔓 Mở khoá nội dung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=11">
   <style>
-    /* Thêm ít style cho nút nhóm */
-    .card { max-width:720px; margin:40px auto; padding:20px; background:#fff; color:#111; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
-    body { font-family:Inter, system-ui, Arial; background:#f3f6fb; padding:20px; }
-    h2 { margin-top:0; }
-    .action { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; background:#ff0000; color:#fff; border-radius:8px; cursor:pointer; user-select:none; }
-    .action:hover { opacity:0.95; }
-    .status { margin-top:12px; font-weight:600; color:#d33; }
-    .unlock { margin-top:12px; color:#0a84ff; font-weight:600; }
-    .group-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; background:#06b6d4; color:#042; border-radius:8px; cursor:pointer; margin-left:12px; }
-    .group-btn.joined { background:#10b981; color:white; }
-    .controls { margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    .hint { margin-top:10px; color:#555; font-size:14px; }
-    footer.ads-area { margin-top:18px; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #b5f0ff, #e0c3fc, #f9f9f9);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #222;
+      overflow-y: auto; /* ✅ cho phép cuộn */
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 25px 30px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 360px;
+      animation: fadeIn 0.5s ease;
+      margin-bottom: 100px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p { color: #444; font-size: 15px; }
+
+    .action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      padding: 12px 20px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      position: relative;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .action:hover { transform: translateY(-2px); opacity: 0.9; }
+    #ytBtn { background: linear-gradient(90deg, #ff0000, #ff4d4d); }
+    #teleBtn { background: linear-gradient(90deg, #0088cc, #33b1ff); }
+
+    .action.success {
+      background: linear-gradient(90deg, #2ecc71, #52d681) !important;
+    }
+
+    .checkmark {
+      position: absolute;
+      right: 15px;
+      font-size: 18px;
+      display: none;
+    }
+
+    .action.success .checkmark {
+      display: inline;
+      animation: pop 0.3s ease forwards;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .status { margin-top: 15px; font-weight: 500; color: #333; }
+    .unlock { margin-top: 18px; display: none; }
+
+    .unlock a {
+      background: linear-gradient(90deg, #4CAF50, #66bb6a);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .unlock a:hover { filter: brightness(1.1); }
+
+    .loader {
+      margin: 12px auto;
+      border: 3px solid rgba(0,0,0,0.1);
+      border-top: 3px solid #4CAF50;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer.ads-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h2>🔒 Nội dung bị khoá</h2>
-    <p>Vui lòng ấn vào nút Subscribe và <strong>Tham gia nhóm</strong> để tiếp tục.</p>
+    <h2>🔒 Nội dung bị khóa</h2>
+    <p>Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
 
-    <!-- Nút Subscribe với logo YouTube SVG -->
-    <div>
-      <div id="ytBtn" class="action" role="button" tabindex="0" aria-pressed="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 18" style="vertical-align:middle; margin-right:6px;">
-          <rect width="24" height="18" rx="4" fill="#FF0000"/>
-          <polygon points="10,5 19,9 10,13" fill="white"/>
-        </svg>
-        Subscribe YouTube
-      </div>
-
-      <!-- Nút tham gia nhóm -->
-      <button id="joinBtn" class="group-btn" aria-pressed="false">➕ Tham gia nhóm</button>
+    <div id="ytBtn" class="action">
+      ▶️ Subscribe YouTube
+      <span class="checkmark">✅</span>
     </div>
 
-    <!-- Trạng thái -->
+    <div id="teleBtn" class="action">
+      💬 Tham gia nhóm Telegram
+      <span class="checkmark">✅</span>
+    </div>
+
+    <div class="loader" id="loader"></div>
     <div id="status" class="status">❌ Chưa hoàn thành.</div>
 
-    <!-- Thông báo & Nút mở khoá (ẩn mặc định) -->
-    <div id="unlock" class="unlock" style="display:none;">
-      👉 <a id="unlockLink" href="https://layma.net/8ieHzxvdZ" target="_blank" rel="noopener">Mở khoá ngay</a>
+    <div id="unlock" class="unlock">
+      👉 <a id="unlockLink" href="https://layma.net/8ieHzxvdZ" target="_blank">Mở khoá ngay</a>
     </div>
-
-    <p class="hint">Lưu ý: trang sẽ mở kênh YouTube ngay khi bạn bấm Subscribe. Redirect tới link cuối cùng chỉ xảy ra khi bạn đã bấm "Tham gia nhóm" trước khi đếm ngược kết thúc (hoặc bấm sau khi đếm xong để tiếp tục).</p>
   </div>
 
-  <!-- QUẢNG CÁO TỐI ƯU -->
-<footer class="ads-area">
-  <div class="ads">
-    <!-- POPUNDER -->
-    <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
-  </div>
+  <!-- Quảng cáo luôn hiển thị -->
+  <footer class="ads-area">
+    <div class="ads">
+      <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
+    </div>
+    <div class="ads" style="margin-top:8px;">
+      <script type='text/javascript' src='//offeringchewjean.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
+    </div>
+  </footer>
 
-  <div class="ads">
-    <!-- SOCIAL BAR -->
-    <script type='text/javascript' src='//offeringchewjean.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
-  </div>
-</footer>
-
-  <!-- JS điều khiển -->
   <script>
-    (function(){
-      const ytBtn = document.getElementById("ytBtn");
-      const joinBtn = document.getElementById("joinBtn");
-      const statusEl = document.getElementById("status");
-      const unlockEl = document.getElementById("unlock");
-      const unlockLink = document.getElementById("unlockLink");
+    const ytBtn = document.getElementById("ytBtn");
+    const teleBtn = document.getElementById("teleBtn");
+    const statusEl = document.getElementById("status");
+    const unlock = document.getElementById("unlock");
+    const loader = document.getElementById("loader");
 
-      // Thay bằng link nhóm thực tế của bạn
-      const GROUP_LINK = "https://t.me/yourgroup"; // <-- thay đổi tại đây
+    let ytClicked = false;
+    let teleClicked = false;
+    let unlocking = false;
 
-      // Link redirect giữ nguyên
-      const REDIRECT_LINK = "https://layma.net/8ieHzxvdZ";
-      const YT_LINK = "https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M";
+    ytBtn.onclick = () => handleClick(ytBtn, "https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "Đã nhấn Subscribe!");
+    teleBtn.onclick = () => handleClick(teleBtn, "https://t.me/+2LmRdQqpngEyNjhl", "Đã tham gia nhóm Telegram!");
 
-      let countdownTimer = null;
-      let countdown = 0;
-      let joinClicked = false;
-      let started = false;
+    function handleClick(btn, url, message) {
+      btn.classList.add("success");
+      window.open(url, "_blank");
+      statusEl.innerText = "✅ " + message;
+      if (btn.id === "ytBtn") ytClicked = true;
+      if (btn.id === "teleBtn") teleClicked = true;
+      if (!unlocking && ytClicked && teleClicked) startUnlock();
+    }
 
-      function startCountdown(seconds = 15) {
-        // nếu countdown đang chạy thì không bắt đầu lại
-        if (started) return;
-        started = true;
-        countdown = seconds;
-        statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-        countdownTimer = setInterval(() => {
-          countdown--;
-          statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-          if (countdown <= 0) {
-            clearInterval(countdownTimer);
-            started = false;
-            // Nếu đã tham gia nhóm thì redirect, ngược lại yêu cầu tham gia
-            if (joinClicked) {
-              statusEl.innerText = "✅ Đang chuyển hướng...";
-              // Hiện unlock link (vẫn giữ hành vi mở trực tiếp)
-              unlockEl.style.display = "block";
-              // redirect chính (giữ nguyên)
-              window.location.href = REDIRECT_LINK;
-            } else {
-              statusEl.innerText = "⚠️ Bạn cần tham gia nhóm trước khi mở khoá. Vui lòng bấm 'Tham gia nhóm'.";
-              // Hiện unlock link để người có thể dùng nếu cần (bị ẩn theo yêu cầu trước)
-              unlockEl.style.display = "block";
-              // Không redirect tự động — chờ người dùng bấm join
-            }
-          }
-        }, 1000);
-      }
+    function startUnlock() {
+      unlocking = true;
+      loader.style.display = "block";
+      statusEl.innerText = "⏳ Đang xác minh...";
+      let countdown = 10;
+      const countdownEl = document.createElement("div");
+      countdownEl.style.marginTop = "8px";
+      countdownEl.style.fontSize = "14px";
+      countdownEl.style.color = "#555";
+      countdownEl.innerText = `Còn ${countdown}s`;
+      statusEl.appendChild(countdownEl);
 
-      // Khi bấm Subscribe
-      ytBtn.addEventListener("click", function(){
-        // mở YouTube ngay
-        window.open(YT_LINK, "_blank");
-        // cập nhật status và bắt đầu đếm nếu chưa bắt đầu
-        startCountdown(15);
-      });
-
-      // Hỗ trợ keyboard activation cho ytBtn
-      ytBtn.addEventListener("keydown", function(e){
-        if(e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          ytBtn.click();
-        }
-      });
-
-      // Khi bấm Join Group
-      joinBtn.addEventListener("click", function(){
-        // Mở group trong tab mới
-        window.open(GROUP_LINK, "_blank");
-        // Đánh dấu đã bấm join
-        joinClicked = true;
-        joinBtn.classList.add('joined');
-        joinBtn.setAttribute('aria-pressed', 'true');
-        joinBtn.innerText = '✔ Đã tham gia nhóm';
-
-        // Nếu countdown đã kết thúc trước đó (vì người bấm join sau khi countdown dừng), tiếp tục redirect sau 2s
-        if (!started && countdown <= 0) {
-          statusEl.innerText = "✅ Đã tham gia — chuyển hướng sau 2 giây...";
-          setTimeout(() => {
-            statusEl.innerText = "✅ Đang chuyển hướng...";
-            window.location.href = REDIRECT_LINK;
-          }, 2000);
+      const timer = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          clearInterval(timer);
+          loader.style.display = "none";
+          unlock.style.display = "block";
+          statusEl.innerText = "✅ Đã mở khoá thành công!";
         } else {
-          // nếu countdown vẫn đang chạy, cập nhật status để cho biết quyền được cấp
-          statusEl.innerText = "⏳ Đã tham gia nhóm. Trang sẽ chuyển hướng khi đếm ngược kết thúc.";
+          countdownEl.innerText = `Còn ${countdown}s`;
         }
-      });
-
-    })();
+      }, 1000);
+    }
   </script>
-  
 </body>
 </html>
