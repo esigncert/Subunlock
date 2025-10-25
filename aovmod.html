@@ -2,45 +2,47 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <title>🔒 Unlock YouTube</title>
+  <title>🔓 Mở khoá nội dung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #121212;
+      background: linear-gradient(135deg, #b5f0ff, #e0c3fc, #f9f9f9);
+      background-attachment: fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
-      color: #fff;
-      overflow: hidden;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      color: #222;
+      overflow-y: auto; /* ✅ cho phép cuộn */
     }
 
     .card {
-      position: relative;
-      z-index: 2;
-      background: #1e1e1e;
-      padding: 25px 30px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 18px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+      padding: 25px 30px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
       text-align: center;
       max-width: 360px;
       animation: fadeIn 0.5s ease;
+      margin-bottom: 100px;
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.95);}
-      to {opacity: 1; transform: scale(1);}
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
     }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p { color: #444; font-size: 15px; }
 
     .action {
       display: flex;
@@ -55,46 +57,51 @@
       transition: all 0.3s ease;
       font-size: 16px;
       position: relative;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     }
-    .action:hover { transform: translateY(-2px); opacity: 0.9; }
 
-    #ytBtn { background: #ff0000; }
-    #teleBtn { background: #0088cc; }
+    .action:hover { transform: translateY(-2px); opacity: 0.9; }
+    #ytBtn { background: linear-gradient(90deg, #ff0000, #ff4d4d); }
+    #teleBtn { background: linear-gradient(90deg, #0088cc, #33b1ff); }
 
     .action.success {
-      background: #2ecc71 !important;
+      background: linear-gradient(90deg, #2ecc71, #52d681) !important;
     }
+
     .checkmark {
       position: absolute;
       right: 15px;
       font-size: 18px;
       display: none;
     }
+
     .action.success .checkmark {
       display: inline;
       animation: pop 0.3s ease forwards;
     }
+
     @keyframes pop {
       from { transform: scale(0); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
 
-    .status { margin-top: 15px; font-weight: 500; color: #ccc; }
+    .status { margin-top: 15px; font-weight: 500; color: #333; }
     .unlock { margin-top: 18px; display: none; }
+
     .unlock a {
-      background: #4CAF50;
+      background: linear-gradient(90deg, #4CAF50, #66bb6a);
       color: white;
       padding: 10px 16px;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
     }
-    .unlock a:hover { background: #43a047; }
+    .unlock a:hover { filter: brightness(1.1); }
 
     .loader {
       margin: 12px auto;
-      border: 3px solid #333;
+      border: 3px solid rgba(0,0,0,0.1);
       border-top: 3px solid #4CAF50;
       border-radius: 50%;
       width: 30px;
@@ -112,20 +119,21 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #fff;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       padding: 10px 0;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
       text-align: center;
       z-index: 999;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
 
   <div class="card">
     <h2>🔒 Nội dung bị khóa</h2>
-    <p style="color:#bbb;">Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
+    <p>Vui lòng ấn vào cả 2 nút dưới đây để mở khóa</p>
 
     <div id="ytBtn" class="action">
       ▶️ Subscribe YouTube
@@ -145,6 +153,7 @@
     </div>
   </div>
 
+  <!-- Quảng cáo luôn hiển thị -->
   <footer class="ads-area">
     <div class="ads">
       <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
@@ -181,11 +190,11 @@
       unlocking = true;
       loader.style.display = "block";
       statusEl.innerText = "⏳ Đang xác minh...";
-      let countdown = 15;
+      let countdown = 10;
       const countdownEl = document.createElement("div");
       countdownEl.style.marginTop = "8px";
       countdownEl.style.fontSize = "14px";
-      countdownEl.style.color = "#aaa";
+      countdownEl.style.color = "#555";
       countdownEl.innerText = `Còn ${countdown}s`;
       statusEl.appendChild(countdownEl);
 
