@@ -4,149 +4,152 @@
   <meta charset="utf-8" />
   <title>Unlock YouTube</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css?v=11">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       background: #0f172a;
       color: #f8fafc;
+      font-family: 'Poppins', sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
     }
+
     .card {
       background: #1e293b;
-      padding: 30px 25px;
-      border-radius: 16px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.3);
-      text-align: center;
-      max-width: 380px;
-      width: 90%;
-      border: 1px solid #334155;
+      padding: 25px 35px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(56,189,248,0.15);
+      max-width: 400px;
+      width: 100%;
     }
-    h2 {
-      color: #38bdf8;
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-    p {
-      color: #cbd5e1;
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-    .action {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      margin: 8px 0;
-      padding: 12px 0;
-      transition: all 0.3s ease;
-      color: #fff;
-    }
-    #ytBtn {
-      background: #ef4444;
-    }
-    #ytBtn:hover {
-      background: #f87171;
-      transform: scale(1.05);
-    }
-    #teleBtn {
-      background: #0088cc;
-    }
-    #teleBtn:hover {
-      background: #38bdf8;
-      transform: scale(1.05);
-    }
-    .status {
-      margin-top: 15px;
+
+    .action, .tele {
+      margin: 15px 0;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #334155, #1e293b);
+      color: #f8fafc;
       font-weight: 500;
-      font-size: 15px;
-      color: #fbbf24;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
+
+    .action:hover, .tele:hover {
+      background: linear-gradient(145deg, #38bdf8, #0ea5e9);
+      color: #0f172a;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(56,189,248,0.3);
+    }
+
+    .status {
+      margin-top: 10px;
+      color: #94a3b8;
+    }
+
     .unlock {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 16px;
+      margin-top: 20px;
+      font-weight: 600;
     }
-    .unlock a {
-      color: #22c55e;
-      text-decoration: none;
+
+    .ads-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
     }
-    .unlock a:hover {
-      text-decoration: underline;
+
+    .ads {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 8px;
+      min-width: 320px;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
   <div class="card">
     <h2>🔒 Nội dung bị khoá</h2>
-    <p>Vui lòng ấn vào nút <b>Subscribe</b> và <b>tham gia nhóm Telegram</b> để tiếp tục</p>
+    <p>Vui lòng ấn vào nút Subscribe và đăng ký kênh YouTube để tiếp tục</p>
 
+    <!-- Nút Subscribe với logo YouTube SVG -->
     <div id="ytBtn" class="action">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 18" style="margin-right:8px;">
-        <rect width="24" height="18" rx="4" fill="white"/>
-        <polygon points="10,5 19,9 10,13" fill="#ef4444"/>
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           width="24" height="18" viewBox="0 0 24 18" 
+           style="vertical-align:middle; margin-right:6px;">
+        <rect width="24" height="18" rx="4" fill="#FF0000"/>
+        <polygon points="10,5 19,9 10,13" fill="white"/>
       </svg>
       Subscribe YouTube
     </div>
 
-    <div id="teleBtn" class="action">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 240 240" style="margin-right:8px;">
-        <circle cx="120" cy="120" r="120" fill="white"/>
-        <path d="M190 62L39 113c-5 2-5 8 0 10l36 11 13 41c2 5 8 6 11 2l20-19 38 27c3 2 8 1 9-3l29-116c1-4-3-8-7-6z" fill="#0088cc"/>
+    <!-- Nút Tham gia nhóm Telegram -->
+    <div id="teleBtn" class="tele">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#229ED9" viewBox="0 0 24 24" style="margin-right:6px;">
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 5.097 3.163 9.426 7.594 11.066l.101-.388-.172-1.432 2.5-2.495-2.328-1.693 1.802-1.329 1.493 1.101 4.57-3.545-6.422 4.742-1.212-.895 8.952-6.55L22.5 9l-3.768 14.217C14.79 23.688 13.43 24 12 24c-6.627 0-12-5.373-12-12z"/>
       </svg>
       Tham gia nhóm Telegram
     </div>
 
+    <!-- Trạng thái -->
     <div id="status" class="status">❌ Chưa hoàn thành.</div>
 
+    <!-- Nút mở khoá (ẩn mặc định) -->
     <div id="unlock" class="unlock" style="display:none;">
       👉 <a id="unlockLink" href="https://layma.net/8ieHzxvdZ" target="_blank">Mở khoá ngay</a>
     </div>
   </div>
 
+  <!-- QUẢNG CÁO -->
+  <footer class="ads-area">
+    <div class="ads">
+      <!-- POPUNDER -->
+      <script type='text/javascript' src='//offeringchewjean.com/05/1f/b8/051fb8def480050f8c8532da24208aae.js'></script>
+    </div>
+
+    <div class="ads">
+      <!-- SOCIAL BAR -->
+      <script type='text/javascript' src='//offeringchewjean.com/72/59/2a/72592af36c39a0de20db9a1c0de2141d.js'></script>
+    </div>
+  </footer>
+
   <script>
-    const ytBtn = document.getElementById("ytBtn");
-    const teleBtn = document.getElementById("teleBtn");
-    const statusEl = document.getElementById("status");
-    const unlock = document.getElementById("unlock");
+    document.getElementById("ytBtn").addEventListener("click", function() {
+      let countdown = 15; // giây chờ
+      document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
 
-    let ytClicked = false;
-    let teleClicked = false;
+      let timer = setInterval(function() {
+        countdown--;
+        document.getElementById("status").innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
+        if (countdown <= 0) {
+          clearInterval(timer);
+          document.getElementById("unlock").style.display = "block";
+          document.getElementById("status").innerText = "✅ Đang chuyển hướng...";
+          window.location.href = "https://layma.net/8ieHzxvdZ";
+        }
+      }, 1000);
 
-    ytBtn.addEventListener("click", function() {
-      ytClicked = true;
       window.open("https://youtube.com/@khoindvnmodios?si=6ODFdsejeZVCRk1M", "_blank");
-      checkBoth();
     });
 
-    teleBtn.addEventListener("click", function() {
-      teleClicked = true;
+    // Nút Telegram
+    document.getElementById("teleBtn").addEventListener("click", function() {
       window.open("https://t.me/+2LmRdQqpngEyNjhl", "_blank");
-      checkBoth();
     });
-
-    function checkBoth() {
-      if (ytClicked && teleClicked) {
-        let countdown = 15;
-        statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-        const timer = setInterval(() => {
-          countdown--;
-          statusEl.innerText = "⏳ Vui lòng chờ " + countdown + " giây...";
-          if (countdown <= 0) {
-            clearInterval(timer);
-            unlock.style.display = "block";
-            statusEl.innerText = "✅ Hoàn tất, bạn có thể mở khoá.";
-          }
-        }, 1000);
-      } else {
-        statusEl.innerText = "⚠️ Hãy nhấn cả 2 nút để mở khoá.";
-      }
-    }
   </script>
 </body>
 </html>
