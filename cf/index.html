@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFMLuxury Key</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  background: #fff;
+}
+
+.box {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.key {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a7cff;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.note {
+  font-size: 13px;
+  color: #ff3b30;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #0a7cff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+button:active {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <div class="title">Key của bạn</div>
+
+  <div class="key" id="key"></div>
+
+  <div class="note">
+    Key của bạn có thời hạn sử dụng 12 tiếng.  
+    Vui lòng không chia sẻ cho người khác.
+  </div>
+
+  <button onclick="copyKey()">Sao chép</button>
+</div>
+
+<script>
+const KEYS = [
+  "CFMLuxury-hour-P7vzoGWDDbfbcB8i",
+  "CFMLuxury-hour-X3jhZd5vGBXISrGr",
+  "CFMLuxury-hour-hVnvRjFvgAMoxToe",
+  "CFMLuxury-hour-S1k3lD4d0YhbJQcn",
+  "CFMLuxury-hour-OU9iwv2crAVVHh3s",
+  "CFMLuxury-hour-RKoytLj2gqOqXxw7",
+  "CFMLuxury-hour-L2MESgUgXTA5Ef6P",
+  "CFMLuxury-hour-MAf9Zf0kOAdbEDzo",
+  "CFMLuxury-hour-AG66xplu1bpSdguY",
+  "CFMLuxury-hour-nyxTnzEwbUHtpPHg",
+  "CFMLuxury-hour-XY0rTIg7WB0pSrl5",
+  "CFMLuxury-hour-4V92aeBEu71qJJCi",
+  "CFMLuxury-hour-y83o15rVwu3n5GRy",
+  "CFMLuxury-hour-AZmtudFz1BEaLbb7",
+  "CFMLuxury-hour-ecADx0qozjaZp3av",
+  "CFMLuxury-hour-Kz8KZ9uD1rGmKHiJ",
+  "CFMLuxury-hour-hFJkzWD72RVHcGjZ",
+  "CFMLuxury-hour-xolfNBRP7FsubkN8",
+  "CFMLuxury-hour-hkJZthrhDI0f5quy",
+  "CFMLuxury-hour-RcxGuVE549HaQZJP",
+  "CFMLuxury-hour-vAVqMEdeEnj6lode",
+  "CFMLuxury-hour-AcxBLdDz3uEgsOGV"
+];
+
+// random key mỗi lần load
+const key = KEYS[Math.floor(Math.random() * KEYS.length)];
+document.getElementById("key").innerText = key;
+
+function copyKey() {
+  navigator.clipboard.writeText(key);
+  alert("Đã sao chép key");
+}
+</script>
+
+</body>
+</html>
