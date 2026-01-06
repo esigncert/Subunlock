@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chọn MP3 để phát</title>
+</head>
+<body>
+
+<h3>🎵 Chọn file nhạc MP3</h3>
+
+<input type="file" accept="audio/mp3,audio/mpeg" onchange="playMusic(this)">
+
+<br><br>
+
+<audio id="audio" controls></audio>
+
+<script>
+function playMusic(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const audio = document.getElementById("audio");
+  audio.src = URL.createObjectURL(file);
+  audio.play();
+}
+</script>
+
+</body>
+</html>
